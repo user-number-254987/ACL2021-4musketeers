@@ -1,0 +1,4 @@
+
+Interface graphique Terminée 
+
+Mise à jour des digrammes de séquence et de class.
