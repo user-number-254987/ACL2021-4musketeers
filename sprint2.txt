@@ -2,4 +2,5 @@
 Interface graphique Terminée (DARRAI Walid
 DE MARCILLAC HUBERT)
 
-Mise à jour des digrammes de séquence et de class.
+Mise à jour des digrammes de séquence et de class. (Alaadine el jebari 
+Lezgham Zakaria)
