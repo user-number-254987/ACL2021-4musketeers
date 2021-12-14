@@ -21,10 +21,10 @@ public class Tray extends Pane {
             "src/main/resources/Images/treasure.jpg";
 	
 	private static final String TRAP_BOX_IMAGE =
-            "src/main/resources/Images/treasure.png";
+            "src/main/resources/Images/campfire.gif";
 	
 	private static final String MAGIC_BOX_IMAGE =
-            "src/main/resources/Images/treasure.png";
+            "src/main/resources/Images/campfire.gif";
 	
 	private static final String WALL_BOX_IMAGE =
             "src/main/resources/Images/wall.jpg";
@@ -46,14 +46,15 @@ public class Tray extends Pane {
 		Image imgPassage = new Image(new File(PASSAGE_BOX_IMAGE).toURI().toString(), App.BOX_SIZE, App.BOX_SIZE, false, false);
 		Image imgTreasure = new Image(new File(TREASURE_BOX_IMAGE).toURI().toString(), App.BOX_SIZE, App.BOX_SIZE, false, false);
 		Image imgWall = new Image(new File(WALL_BOX_IMAGE).toURI().toString(), App.BOX_SIZE, App.BOX_SIZE, false, false);
+		Image imgTrap = new Image(new File(TRAP_BOX_IMAGE).toURI().toString(), App.BOX_SIZE, App.BOX_SIZE, false, false);
 		for (int y = 0; y < App.HEIGHT; y++) {
             for (int x = 0; x < App.WIDTH; x++) {
             	Box box;
             	switch (maze.getBoxType(x, y)) {
 					case PASSAGE: box = new Box(imgPassage, x, y);break;
 					case TREASURE: box = new Box(imgTreasure, x, y);break;
-					case TRAP: box = new Box(imgPassage, x, y);break;
-					case MAGIC: box = new Box(imgPassage, x, y);break;
+					case TRAP: box = new Box(imgTrap, x, y);break;
+					case MAGIC: box = new Box(imgTrap, x, y);break;
 					case WALL: box = new Box(imgWall, x, y);break;
 					default:
 						box = new Box(imgPassage, x, y);

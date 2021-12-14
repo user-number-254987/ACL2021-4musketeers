@@ -13,26 +13,32 @@ public class Hero extends ImageView {
             "http://icons.iconarchive.com/icons/raindropmemory/legendora/64/Hero-icon.png";
 	
 	private static final String HERO_IMAGE_LOC2 =
-            "src/main/resources/Images/adventurer-run-02.png";
+            "src/main/resources/Images/idle.gif";
+	
+	private static final String HERO_IMAGE_LOC3 =
+            "src/main/resources/Images/run.gif";
 	
 	private double posX;
 	private double posY;
 	
-	private double dx = 1;
-	private double dy = 1;
+	private double dx = 0.1;
+	private double dy = 0.1;
 	
 	private Image imageStill;
 	private Image imageMoving;
 	
+	private AnimationTimer timer;
+	
 	//private AnimationTimer timer;
 	
 	public Hero(double x, double y) {
-		imageStill = new Image(new File(HERO_IMAGE_LOC2).toURI().toString(), App.BOX_SIZE, App.BOX_SIZE, false, false);
-		imageMoving = new Image(new File(HERO_IMAGE_LOC2).toURI().toString());
+		imageStill = new Image(new File(HERO_IMAGE_LOC2).toURI().toString());
+		imageMoving = new Image(new File(HERO_IMAGE_LOC3).toURI().toString());
 
 		//imageStill = new Image(HERO_IMAGE_LOC, App.BOX_SIZE, App.BOX_SIZE, false, false);
 		//imageMoving = new Image(HERO_IMAGE_LOC, App.BOX_SIZE, App.BOX_SIZE, false, false);
-
+		
+		
 		
 		this.setImage(imageStill);
 		this.moveHeroTo(x, y);
@@ -82,13 +88,30 @@ public class Hero extends ImageView {
 	}
 
 	public void moveInDirection(MoveDirection direction) {
-		switch(direction) {
-			case UP: moveHeroTo(posX, posY-dy); break;
-			case DOWN: moveHeroTo(posX, posY+dy); break;
-			case RIGHT: moveHeroTo(posX+dx, posY); break;
-			case LEFT: moveHeroTo(posX-dx, posY); break;
-		}
+				
+				switch(direction) {
+					case UP: {
+						setImage(imageMoving);
+						moveHeroTo(posX, posY-dy); 
+						break;
+					}
+					case DOWN:{
+						setImage(imageMoving);
+						moveHeroTo(posX, posY+dy); 
+						break;
+					}
+					case RIGHT: {
+						setImage(imageMoving);
+						moveHeroTo(posX+dx, posY);
+						break;
+					}
+					case LEFT: moveHeroTo(posX-dx, posY); break;
+				}
 		
+	}
+	
+	public void idle() {
+		setImage(imageStill);
 	}
 	
 	public void moveHeroTo(double x, double y) {

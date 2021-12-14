@@ -45,44 +45,57 @@ public class App extends Application {
     	hero.moveHeroTo(5, 10);
     	
     	
-    	scene.setOnKeyPressed(e-> {
-            switch (e.getCode()) {
-                case UP:    {
-                	Move move = hero.getNextMove(MoveDirection.UP);
-                	if (maze.isMoveValid((int) move.getX(), (int) move.getY())) {
-                		hero.moveInDirection(MoveDirection.UP);
-                	}
-                	break;
-                }
-                case DOWN:  {
-                	Move move = hero.getNextMove(MoveDirection.DOWN);
-                	if (maze.isMoveValid((int) move.getX(), (int) move.getY())) {
-                		hero.moveInDirection(MoveDirection.DOWN);
-                	}
-                	break;
-                
-                }
-                case LEFT: {
-                	Move move = hero.getNextMove(MoveDirection.LEFT);
-                	if (maze.isMoveValid((int) move.getX(), (int) move.getY())) {
-                		hero.moveInDirection(MoveDirection.LEFT);
-                	}
-                	break;                }
-                case RIGHT: {
-                	Move move = hero.getNextMove(MoveDirection.RIGHT);
-                	if (maze.isMoveValid((int) move.getX(), (int) move.getY())) {
-                		hero.moveInDirection(MoveDirection.RIGHT);
-                	}
-                	break;
-                }
-                default: break;
+    	AnimationTimer timer = new AnimationTimer() {
+            @Override
+            public void handle(long now) {
+            	scene.setOnKeyPressed(e-> {
+                    switch (e.getCode()) {
+                        case UP:    {
+                        	Move move = hero.getNextMove(MoveDirection.UP);
+                        	if (maze.isMoveValid((int) move.getX(), (int) move.getY())) {
+                        		hero.moveInDirection(MoveDirection.UP);
+                        	}
+                        	break;
+                        }
+                        case DOWN:  {
+                        	Move move = hero.getNextMove(MoveDirection.DOWN);
+                        	if (maze.isMoveValid((int) move.getX(), (int) move.getY())) {
+                        		hero.moveInDirection(MoveDirection.DOWN);
+                        	}
+                        	break;
+                        
+                        }
+                        case LEFT: {
+                        	Move move = hero.getNextMove(MoveDirection.LEFT);
+                        	if (maze.isMoveValid((int) move.getX(), (int) move.getY())) {
+                        		hero.moveInDirection(MoveDirection.LEFT);
+                        	}
+                        	break;                }
+                        case RIGHT: {
+                        	Move move = hero.getNextMove(MoveDirection.RIGHT);
+                        	if (maze.isMoveValid((int) move.getX(), (int) move.getY())) {
+                        		hero.moveInDirection(MoveDirection.RIGHT);
+                        	}
+                        	break;
+                        }
+                        default: break;
+                    }
+                });
+            	
+            	scene.setOnKeyReleased(e->{
+                    hero.idle();
+                });
             }
-        });
+        };
+        timer.start();
+    	
+     
     	
     	stage.setScene(scene);
     	stage.show();
         
-    }
+    };
+    
     /*
     static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
