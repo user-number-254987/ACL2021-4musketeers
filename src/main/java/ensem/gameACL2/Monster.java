@@ -16,7 +16,7 @@ public class Monster extends Rectangle {
             "http://icons.iconarchive.com/icons/raindropmemory/legendora/64/Hero-icon.png";
 	
 	private static final String HERO_IMAGE_LOC2 =
-            "src/main/resources/Images/monster.png";
+            "src/main/resources/Images/monster3.png";
 	
 	private static final String HERO_IMAGE_LOC3 =
             "src/main/resources/Images/run.gif";
