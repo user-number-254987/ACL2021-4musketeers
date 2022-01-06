@@ -1,0 +1,6 @@
+Tâche à réaliser :
+Génération et exécution des tests : Alaadine Eljebari
+Finaliser la classe monstre : Walid darrai
+Génération de plusieurs niveaux : Zakaria lezgham / Zakaria haraja
+Finaliser les 'bonus': tous le groupe
+Création des animations pour le héro/monstre: Hubert
