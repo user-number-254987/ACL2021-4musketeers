@@ -21,8 +21,10 @@ public class Hero extends ImageView {
 	private double posX;
 	private double posY;
 	
-	private double dx = 0.1;
-	private double dy = 0.1;
+	private double dx = 1;
+	private double dy = 1;
+	
+	private int health = 100;
 	
 	private Image imageStill;
 	private Image imageMoving;
@@ -43,6 +45,14 @@ public class Hero extends ImageView {
 		this.setImage(imageStill);
 		this.moveHeroTo(x, y);
 
+	}
+	
+	public void setHealth(int health) {
+		this.health = health;
+	}
+	
+	public int getHealth() {
+		return this.health;
 	}
 	
 	public double getPosX() {

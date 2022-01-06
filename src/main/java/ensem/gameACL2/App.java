@@ -11,6 +11,8 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * JavaFX App
@@ -22,30 +24,76 @@ public class App extends Application {
 	public static int HEIGHT = 12;
 	public static int WIDTH = 24;
 	
-	public static double INCREMENT = 0.5;
+	public static double INCREMENT = 1;
 
     private static Scene scene;
     
     private Hero hero;
+    
+    
+    
+    Maze maze;
 
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start(Stage stage) throws IOException, InterruptedException {
     	
     	hero = new Hero(0, 0);
     	
     	Tray tray = new Tray();
     	
+    	
     	Maze maze = new Maze("src/main/resources/MazBoxeTypes/text");
+    	
+    	
+    	
     	tray.createContent(maze);
     	
     	tray.getChildren().add(hero);
+    	Monster monster1 = new Monster(2, 4);
+    	Monster monster2 = new Monster(5, 7);
+    	Monster monster3 = new Monster(12, 3);
+    	Monster monster4 = new Monster(6, 4);
+    	
+		monster1.start(maze);
+		monster2.start(maze);
+		monster3.start(maze);
+		monster4.start(maze);
+    	
+    	tray.getChildren().add(monster1);
+    	tray.getChildren().add(monster2);
+    	tray.getChildren().add(monster3);
+    	tray.getChildren().add(monster4);
+    	
+    	
     	
     	scene = new Scene(tray);
     	
     	hero.moveHeroTo(5, 10);
     	
     	
-    	AnimationTimer timer = new AnimationTimer() {
+		
+		
+		
+		
+		Timer tm = new java.util.Timer();
+		tm.schedule(new TimerTask(){
+			//override run method
+			@Override
+			public void run() {
+				try {
+					monster1.start(maze);
+					monster2.start(maze);
+					monster3.start(maze);
+					monster4.start(maze);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			}, 1500, 500);
+		
+		
+		AnimationTimer timer = new AnimationTimer() {
             @Override
             public void handle(long now) {
             	scene.setOnKeyPressed(e-> {
@@ -54,6 +102,14 @@ public class App extends Application {
                         	Move move = hero.getNextMove(MoveDirection.UP);
                         	if (maze.isMoveValid((int) move.getX(), (int) move.getY())) {
                         		hero.moveInDirection(MoveDirection.UP);
+                        		switch(maze.getBoxType((int) move.getX(), (int) move.getY())) {
+                        			case HEAL: {
+                        				
+                        				break;
+                        			}
+                        			default: break;
+                        		
+                        		}
                         	}
                         	break;
                         }
@@ -87,7 +143,10 @@ public class App extends Application {
                 });
             }
         };
+        
         timer.start();
+        
+        
     	
      
     	
@@ -96,7 +155,9 @@ public class App extends Application {
         
     };
     
-    /*
+   
+
+	/*
     static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
     }
@@ -108,6 +169,8 @@ public class App extends Application {
 	*/
     public static void main(String[] args) {
         launch();
+        
+    	
     }
 
 }

@@ -5,5 +5,6 @@ public enum BoxType {
 	TREASURE,
 	TRAP,
 	MAGIC,
-	WALL
+	WALL,
+	HEAL
 }
