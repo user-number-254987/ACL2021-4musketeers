@@ -1,5 +1,4 @@
-Interface graphique Terminée (DARRAI Walid
-DE MARCILLAC HUBERT)
+Interface graphique Terminée (DARRAI Walid)
 
 Mise à jour des digrammes de séquence et de class. (Alaadine el jebari 
 Lezgham Zakaria)
