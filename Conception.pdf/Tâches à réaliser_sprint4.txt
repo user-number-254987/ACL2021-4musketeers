@@ -1,4 +1,5 @@
 Tâche à réaliser :
 Génération et exécution des tests : Alaadine Eljebari
 Finaliser la classe monstre : Walid darrai
-Finaliser le jeu: tous le groupe
+Finaliser le jeu: Haraja Zakaria
+Génerer les diagrammes finaux: Lezgham Zakaria
