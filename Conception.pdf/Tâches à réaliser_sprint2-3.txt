@@ -1,0 +1,7 @@
+Interface graphique Terminée (DARRAI Walid
+DE MARCILLAC HUBERT)
+
+Mise à jour des digrammes de séquence et de class. (Alaadine el jebari 
+Lezgham Zakaria)
+
+Mise à jour des class déja réalisé ( Labyrinth, hero , plateau)
