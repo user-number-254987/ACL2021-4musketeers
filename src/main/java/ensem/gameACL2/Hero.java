@@ -13,16 +13,16 @@ public class Hero extends ImageView {
             "http://icons.iconarchive.com/icons/raindropmemory/legendora/64/Hero-icon.png";
 	
 	private static final String HERO_IMAGE_LOC2 =
-            "src/main/resources/Images/idle.gif";
+           "src/main/resources/Images/idle.gif";
 	
 	private static final String HERO_IMAGE_LOC3 =
             "src/main/resources/Images/run.gif";
 	
-	private double posX;
-	private double posY;
+	private int posX;
+	private int posY;
 	
-	private double dx = 1;
-	private double dy = 1;
+	private int dx = 1;
+	private int dy = 1;
 	
 	private int health = 100;
 	
@@ -33,9 +33,9 @@ public class Hero extends ImageView {
 	
 	//private AnimationTimer timer;
 	
-	public Hero(double x, double y) {
-		imageStill = new Image(new File(HERO_IMAGE_LOC2).toURI().toString());
-		imageMoving = new Image(new File(HERO_IMAGE_LOC3).toURI().toString());
+	public Hero(int x, int y) {
+		//imageStill = new Image(new File(HERO_IMAGE_LOC2).toURI().toString());
+		//imageMoving = new Image(new File(HERO_IMAGE_LOC3).toURI().toString());
 
 		//imageStill = new Image(HERO_IMAGE_LOC, App.BOX_SIZE, App.BOX_SIZE, false, false);
 		//imageMoving = new Image(HERO_IMAGE_LOC, App.BOX_SIZE, App.BOX_SIZE, false, false);
@@ -55,19 +55,19 @@ public class Hero extends ImageView {
 		return this.health;
 	}
 	
-	public double getPosX() {
+	public int getPosX() {
 		return posX;
 	}
 
-	public void setPosX(double posX) {
+	public void setPosX(int posX) {
 		this.posX = posX;
 	}
 
-	public double getPosY() {
+	public int getPosY() {
 		return posY;
 	}
 
-	public void setPosY(double posY) {
+	public void setPosY(int posY) {
 		this.posY = posY;
 	}
 	
@@ -117,6 +117,8 @@ public class Hero extends ImageView {
 					}
 					case LEFT: moveHeroTo(posX-dx, posY); break;
 				}
+				System.out.println("x= "+posX);
+				System.out.println("y= "+posY);
 		
 	}
 	
@@ -124,7 +126,7 @@ public class Hero extends ImageView {
 		setImage(imageStill);
 	}
 	
-	public void moveHeroTo(double x, double y) {
+	public void moveHeroTo(int x, int y) {
 		posX = x;
         posY = y;
         //this.setImage(imageMoving);

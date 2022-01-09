@@ -68,7 +68,7 @@ public class App extends Application {
     	
     	scene = new Scene(tray);
     	
-    	hero.moveHeroTo(5, 10);
+    	hero.moveHeroTo(1, 1);
     	
     	
 		
