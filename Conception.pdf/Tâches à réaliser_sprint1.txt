@@ -1,0 +1,11 @@
+Les taches à réaliser:
+      1) digrame de séquences
+      2) digrame de class
+      Dans la version v0 il suffit d'implémenter la classe héro et plateau
+      3) implémentation du class héro.
+      4) implémentation du class plateau.
+      5) implémentation du program principale.
+      
+      
+Les taches 1) 2) à réaliser par: DE MARCILLAC HUBERT et Lezgham Zakaria.
+Les taches 3) 4) et 5) à réaliser par: Darrai Walid Alaadine el jebari et Zakaria Haraja
