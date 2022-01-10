@@ -4,7 +4,7 @@ Les taches à réaliser:
       Dans la version v0 il suffit d'implémenter la classe héro et plateau
       3) implémentation du class héro.
       4) implémentation du class plateau.
-      5) implémentation du program principale.
+      5) implémentation du class App.
       
       
 Les taches 1) 2) à réaliser par: Lezgham Zakaria.
