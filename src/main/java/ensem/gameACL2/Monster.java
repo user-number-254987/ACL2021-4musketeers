@@ -61,6 +61,9 @@ public class Monster extends Rectangle {
 	public void killHero(Hero hero) {
 		hero.die();
 	}
+	public double getPosY() {
+		return posY;
+	}
 
 	
 	public void start(Maze maze, Hero hero) throws InterruptedException {

@@ -1,8 +1,8 @@
 package ensem.gameACL2;
 
 public class Move {
-	private double X;
-	private double Y;
+	private int X;
+	private int Y;
 	
 	public Move() {
 		super();
@@ -10,25 +10,25 @@ public class Move {
 		Y = 0;
 	}
 
-	public Move(double x, double y) {
+	public Move(int x, int y) {
 		super();
 		X = x;
 		Y = y;
 	}
 
-	public double getX() {
+	public int getX() {
 		return X;
 	}
 
-	public void setX(double x) {
+	public void setX(int x) {
 		X = x;
 	}
 
-	public double getY() {
+	public int getY() {
 		return Y;
 	}
 
-	public void setY(double y) {
+	public void setY(int y) {
 		Y = y;
 	}
 	
