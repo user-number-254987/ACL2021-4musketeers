@@ -2,6 +2,7 @@ package ensem.gameACL2;
 
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,6 +12,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -33,6 +35,17 @@ public class App extends Application {
     
     
     Maze maze;
+    public boolean GameOver(Hero hero,ArrayList<Monster> monsters) {
+        boolean gameOver = false;
+
+    		for(int i = 0; i<monsters.size();i++) {
+    			if(monsters.get(i).getPosX()==hero.getPosX() && monsters.get(i).getPosY()==hero.getPosY()) {
+    				gameOver=true;
+    				break;
+    				}
+    			}
+    		return gameOver;
+        }
 
     @Override
     public void start(Stage stage) throws IOException, InterruptedException {
@@ -53,6 +66,11 @@ public class App extends Application {
     	Monster monster2 = new Monster(5, 7);
     	Monster monster3 = new Monster(12, 3);
     	Monster monster4 = new Monster(6, 4);
+    	ArrayList<Monster> monsters = new ArrayList<Monster>();
+    	monsters.add(monster1);
+    	monsters.add(monster2);
+    	monsters.add(monster3);
+    	monsters.add(monster4);
     	
 		monster1.start(maze);
 		monster2.start(maze);
@@ -80,16 +98,23 @@ public class App extends Application {
 			//override run method
 			@Override
 			public void run() {
+				if (GameOver(hero,monsters)==false){
+					
+				}
 				try {
 					monster1.start(maze);
 					monster2.start(maze);
 					monster3.start(maze);
 					monster4.start(maze);
+
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
+					}
+				
 				}
-			}
+
+			
 			}, 1500, 500);
 		
 		

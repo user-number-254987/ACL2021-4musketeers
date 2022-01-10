@@ -57,6 +57,9 @@ public class Monster extends Rectangle {
 	public double getPosX() {
 		return posX;
 	}
+	public double getPosY() {
+		return posY;
+	}
 
 	
 	public void start(Maze maze) throws InterruptedException {
