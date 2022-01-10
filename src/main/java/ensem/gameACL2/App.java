@@ -11,6 +11,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Timer;
@@ -46,6 +47,20 @@ public class App extends Application {
     			}
     		return gameOver;
         }
+    public boolean agagne(Hero hero,Maze maze){
+        boolean agagne = false;
+        
+
+        for (int j=0; j < App.HEIGHT; j++) {
+	    	for (int i=0; i < App.WIDTH; i++) {
+    			if(maze.getBoxType(i,j)==BoxType.TREASURE && hero.getPosX()==i && hero.getPosY()==j) {
+    				agagne=true;
+    				break;
+    				}
+    			}
+    		;
+        }
+		return agagne;}
 
     @Override
     public void start(Stage stage) throws IOException, InterruptedException {
@@ -97,10 +112,10 @@ public class App extends Application {
 		tm.schedule(new TimerTask(){
 			//override run method
 			@Override
-			public void run() {
-				if (GameOver(hero,monsters)==false){
+			public void run(){
+				
 					
-				}
+				
 				try {
 					monster1.start(maze, hero);
 					monster2.start(maze, hero);
@@ -111,9 +126,10 @@ public class App extends Application {
 					e.printStackTrace();
 					}
 				
+				
 				}
 			
-			}, 1500, 1400);
+			}, 500, 400);
 		
 		
 		AnimationTimer timer = new AnimationTimer() {
@@ -133,7 +149,7 @@ public class App extends Application {
                         			}
                         			case TREASURE:{
                         				//hero.win();
-                        				hero.moveHeroTo(1, 1);
+                        				
                         				break;
                         			}
                         			default: break;
@@ -153,7 +169,7 @@ public class App extends Application {
                     			}
                     			case TREASURE:{
                     				//hero.win();
-                    				hero.moveHeroTo(1, 1);
+                    				
                     				break;
                     			}
                     			default: break;
@@ -174,7 +190,7 @@ public class App extends Application {
                     			}
                     			case TREASURE:{
                     				//hero.win();
-                    				hero.moveHeroTo(1, 1);
+                    				
                     				break;
                     			}
                     			default: break;
@@ -192,7 +208,7 @@ public class App extends Application {
                     				break;
                     			}
                     			case TREASURE:{
-                    				hero.moveHeroTo(1, 1);
+                    				
                     				//hero.win();
                     				break;
                     			}
@@ -208,10 +224,19 @@ public class App extends Application {
             	
             	scene.setOnKeyReleased(e->{
             		if (hero.isDead()) {
+            			
             			hero.die();
             		} else {
             			hero.idle();
             		}
+            		if (GameOver(hero,monsters)==false && agagne(hero,maze)==false){}
+    				else if(GameOver(hero,monsters)==true) {
+    					Platform.exit();
+    					System.out.println("vous avez perdu");}
+    				else if (agagne(hero,maze)==true) {
+    					Platform.exit();
+    					System.out.println("félicitations vous avez gagné");
+    					}
                 });
             }
         };
