@@ -2,4 +2,4 @@ Interface graphique Terminée (DARRAI Walid)
 
 Mise à jour des digrammes de séquence et de class. (Lezgham Zakaria  Haraja Zakaria)
 
-Mise à jour des class déja réalisé ( Labyrinth, hero , plateau)(DARRAI Walid, Lezgham Zakaria  Haraja Zakaria Alaadine eljebari)
+Mise à jour des class déja réalisé (App, Labyrinth, hero , Maze, Box, ..)(DARRAI Walid, Lezgham Zakaria  Haraja Zakaria Alaadine eljebari)
