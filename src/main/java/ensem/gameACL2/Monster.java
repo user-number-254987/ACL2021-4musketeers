@@ -57,9 +57,13 @@ public class Monster extends Rectangle {
 	public double getPosX() {
 		return posX;
 	}
+	
+	public void killHero(Hero hero) {
+		hero.die();
+	}
 
 	
-	public void start(Maze maze) throws InterruptedException {
+	public void start(Maze maze, Hero hero) throws InterruptedException {
 			int dx = (int) ( Math.round( Math.random() ) - Math.round( Math.random() ));
 			int dy = (int) (Math.round( Math.random() )-Math.round( Math.random() )) ;
 			
@@ -68,6 +72,10 @@ public class Monster extends Rectangle {
 				this.posX = this.posX+dx;
 				this.posY = this.posY+dy;
 				relocate(posX * App.BOX_SIZE, posY * App.BOX_SIZE);
+			}
+			
+			if((this.posX == hero.getPosX()) && (this.posY == hero.getPosY())) {
+				hero.die();
 			}
 	}
 	

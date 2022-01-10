@@ -54,10 +54,10 @@ public class App extends Application {
     	Monster monster3 = new Monster(12, 3);
     	Monster monster4 = new Monster(6, 4);
     	
-		monster1.start(maze);
-		monster2.start(maze);
-		monster3.start(maze);
-		monster4.start(maze);
+		monster1.start(maze, hero);
+		monster2.start(maze, hero);
+		monster3.start(maze, hero);
+		monster4.start(maze, hero);
     	
     	tray.getChildren().add(monster1);
     	tray.getChildren().add(monster2);
@@ -68,7 +68,7 @@ public class App extends Application {
     	
     	scene = new Scene(tray);
     	
-    	hero.moveHeroTo(5, 10);
+    	hero.moveHeroTo(1, 1);
     	
     	
 		
@@ -81,30 +81,36 @@ public class App extends Application {
 			@Override
 			public void run() {
 				try {
-					monster1.start(maze);
-					monster2.start(maze);
-					monster3.start(maze);
-					monster4.start(maze);
+					monster1.start(maze, hero);
+					monster2.start(maze, hero);
+					monster3.start(maze, hero);
+					monster4.start(maze, hero);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
-			}, 1500, 500);
+			}, 1500, 1400);
 		
 		
 		AnimationTimer timer = new AnimationTimer() {
             @Override
             public void handle(long now) {
             	scene.setOnKeyPressed(e-> {
+            		if( !(hero.isDead())){
                     switch (e.getCode()) {
                         case UP:    {
                         	Move move = hero.getNextMove(MoveDirection.UP);
                         	if (maze.isMoveValid((int) move.getX(), (int) move.getY())) {
                         		hero.moveInDirection(MoveDirection.UP);
                         		switch(maze.getBoxType((int) move.getX(), (int) move.getY())) {
-                        			case HEAL: {
-                        				
+                        			case TRAP: {
+                        				hero.die();
+                        				break;
+                        			}
+                        			case TREASURE:{
+                        				//hero.win();
+                        				hero.moveHeroTo(1, 1);
                         				break;
                         			}
                         			default: break;
@@ -117,6 +123,19 @@ public class App extends Application {
                         	Move move = hero.getNextMove(MoveDirection.DOWN);
                         	if (maze.isMoveValid((int) move.getX(), (int) move.getY())) {
                         		hero.moveInDirection(MoveDirection.DOWN);
+                        		switch(maze.getBoxType((int) move.getX(), (int) move.getY())) {
+                    			case TRAP: {
+                    				hero.die();
+                    				break;
+                    			}
+                    			case TREASURE:{
+                    				//hero.win();
+                    				hero.moveHeroTo(1, 1);
+                    				break;
+                    			}
+                    			default: break;
+                    		
+                    		}
                         	}
                         	break;
                         
@@ -125,21 +144,51 @@ public class App extends Application {
                         	Move move = hero.getNextMove(MoveDirection.LEFT);
                         	if (maze.isMoveValid((int) move.getX(), (int) move.getY())) {
                         		hero.moveInDirection(MoveDirection.LEFT);
+                        		switch(maze.getBoxType((int) move.getX(), (int) move.getY())) {
+                    			case TRAP: {
+                    				hero.die();
+                    				break;
+                    			}
+                    			case TREASURE:{
+                    				//hero.win();
+                    				hero.moveHeroTo(1, 1);
+                    				break;
+                    			}
+                    			default: break;
+                    		
+                    		}
                         	}
                         	break;                }
                         case RIGHT: {
                         	Move move = hero.getNextMove(MoveDirection.RIGHT);
                         	if (maze.isMoveValid((int) move.getX(), (int) move.getY())) {
                         		hero.moveInDirection(MoveDirection.RIGHT);
+                        		switch(maze.getBoxType((int) move.getX(), (int) move.getY())) {
+                    			case TRAP: {
+                    				hero.die();
+                    				break;
+                    			}
+                    			case TREASURE:{
+                    				hero.moveHeroTo(1, 1);
+                    				//hero.win();
+                    				break;
+                    			}
+                    			default: break;
+                    		
+                    		}
                         	}
                         	break;
                         }
                         default: break;
-                    }
+                    }}
                 });
             	
             	scene.setOnKeyReleased(e->{
-                    hero.idle();
+            		if (hero.isDead()) {
+            			hero.die();
+            		} else {
+            			hero.idle();
+            		}
                 });
             }
         };
@@ -154,7 +203,6 @@ public class App extends Application {
     	stage.show();
         
     };
-    
    
 
 	/*

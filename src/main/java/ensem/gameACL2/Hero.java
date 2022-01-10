@@ -12,6 +12,12 @@ public class Hero extends ImageView {
 	private static final String HERO_IMAGE_LOC =
             "http://icons.iconarchive.com/icons/raindropmemory/legendora/64/Hero-icon.png";
 	
+	private static final String HERO_IMAGE_DEAD =
+            "src/main/resources/Images/tomb.png";
+	
+	private static final String HERO_IMAGE_WIN =
+            "src/main/resources/Images/trophe.png";
+	
 	private static final String HERO_IMAGE_LOC2 =
             "src/main/resources/Images/idle.gif";
 	
@@ -28,23 +34,40 @@ public class Hero extends ImageView {
 	
 	private Image imageStill;
 	private Image imageMoving;
+	private Image imageDead;
+	private Image imageWin;
 	
 	private AnimationTimer timer;
+	
+	private boolean isDead;
 	
 	//private AnimationTimer timer;
 	
 	public Hero(double x, double y) {
 		imageStill = new Image(new File(HERO_IMAGE_LOC2).toURI().toString());
 		imageMoving = new Image(new File(HERO_IMAGE_LOC3).toURI().toString());
+		imageDead = new Image(new File(HERO_IMAGE_DEAD).toURI().toString(), App.BOX_SIZE, App.BOX_SIZE, false, false);
+		imageWin = new Image(new File(HERO_IMAGE_DEAD).toURI().toString(), App.BOX_SIZE, App.BOX_SIZE, false, false);
+		
 
 		//imageStill = new Image(HERO_IMAGE_LOC, App.BOX_SIZE, App.BOX_SIZE, false, false);
 		//imageMoving = new Image(HERO_IMAGE_LOC, App.BOX_SIZE, App.BOX_SIZE, false, false);
+		
+		isDead = false;
 		
 		
 		
 		this.setImage(imageStill);
 		this.moveHeroTo(x, y);
 
+	}
+	
+	public void win() {
+		this.setImage(imageWin);
+	}
+	
+	public boolean isDead() {
+		return isDead;
 	}
 	
 	public void setHealth(int health) {
@@ -69,6 +92,11 @@ public class Hero extends ImageView {
 
 	public void setPosY(double posY) {
 		this.posY = posY;
+	}
+	
+	public void die() {
+		isDead = true;
+		this.setImage(imageDead);
 	}
 	
 	public Move getNextMove(MoveDirection direction) {
@@ -102,7 +130,7 @@ public class Hero extends ImageView {
 				switch(direction) {
 					case UP: {
 						setImage(imageMoving);
-						moveHeroTo(posX, posY-dy); 
+						moveHeroTo(posX, posY-dy);
 						break;
 					}
 					case DOWN:{
