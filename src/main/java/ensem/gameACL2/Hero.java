@@ -117,8 +117,6 @@ public class Hero extends ImageView {
 					}
 					case LEFT: moveHeroTo(posX-dx, posY); break;
 				}
-				System.out.println("x= "+posX);
-				System.out.println("y= "+posY);
 		
 	}
 	
