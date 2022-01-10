@@ -34,11 +34,11 @@ public class Hero extends ImageView {
 	//private AnimationTimer timer;
 	
 	public Hero(int x, int y) {
-		imageStill = new Image(new File(HERO_IMAGE_LOC2).toURI().toString());
-		imageMoving = new Image(new File(HERO_IMAGE_LOC3).toURI().toString());
+		//imageStill = new Image(new File(HERO_IMAGE_LOC2).toURI().toString());
+		//imageMoving = new Image(new File(HERO_IMAGE_LOC3).toURI().toString());
 
-		imageStill = new Image(HERO_IMAGE_LOC, App.BOX_SIZE, App.BOX_SIZE, false, false);
-		imageMoving = new Image(HERO_IMAGE_LOC, App.BOX_SIZE, App.BOX_SIZE, false, false);
+		//imageStill = new Image(HERO_IMAGE_LOC, App.BOX_SIZE, App.BOX_SIZE, false, false);
+		//imageMoving = new Image(HERO_IMAGE_LOC, App.BOX_SIZE, App.BOX_SIZE, false, false);
 		
 		
 		

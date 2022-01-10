@@ -37,12 +37,12 @@ public class Monster extends Rectangle {
 	//private AnimationTimer timer;
 	
 	public Monster(int x, int y) {
-		imageStill = new Image(new File(HERO_IMAGE_LOC2).toURI().toString());
+	//	imageStill = new Image(new File(HERO_IMAGE_LOC2).toURI().toString());
 		setWidth(App.BOX_SIZE);
         setHeight(App.BOX_SIZE);
 		
 		//this.setImage(imageStill);
-		setFill(new ImagePattern(imageStill));
+		//setFill(new ImagePattern(imageStill));
 		this.moveMonsterTo(x, y);
 	}
 	

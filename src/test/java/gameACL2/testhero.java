@@ -25,10 +25,10 @@ public class testhero {
 	}
 	@Test
 	public void testdeplacementenhaut() throws FileNotFoundException {
-		Hero hero = new Hero(-1,-1);
+		Hero hero = new Hero(2,2);
 		Maze maze = new Maze("src/test/java/gameACL2/text");
 		Move pos1 = hero.getNextMove(MoveDirection.UP);
-		boolean state=	(pos1.getX()==-1) && (pos1.getY()==-2) && 
+		boolean state=	(pos1.getX()==2) && (pos1.getY()==1) && 
 				(maze.isMoveValid(pos1.getX(),pos1.getY()));
 		assertEquals(state,true);
 		
